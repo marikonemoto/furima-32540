@@ -4,18 +4,16 @@
 
 ## users Table
 
-| Column          | Type    | Options                                |
-| --------------- | ------- | -------------------------------------- |
-| nickname        | string  | null: false                            |
-| password        | string  | null: false                            |
-| email           | string  | null: false, unique: true, index: true |
-| first_name      | string  | null: false                            |
-| last_name       | string  | null: false                            |
-| first_name_kana | string  | null: false                            |
-| last_name_kana  | string  | null: false                            |
-| birth_year      | integer | null: false                            |
-| birth_month     | integer | null: false                            |
-| birth_day       | integer | null: false                            |
+| Column             | Type    | Options                                |
+| ------------------ | ------- | -------------------------------------- |
+| nickname           | string  | null: false                            |
+| encrypted_password | string  | null: false                            |
+| email              | string  | null: false, unique: true, index: true |
+| first_name         | string  | null: false                            |
+| last_name          | string  | null: false                            |
+| first_name_kana    | string  | null: false                            |
+| last_name_kana     | string  | null: false                            |
+| dob                | date    | null: false                            |
 
 ### Associations
 -has_many: comments, dependent: :destroy
@@ -68,28 +66,15 @@
 ### Associations
 -belongs_to: item
 
-## credit_cards Table
-| Column           | Type       | Options                                |
-| ---------------- | ---------- | -------------------------------------- |
-| card_number      | integer    | null: false                            |
-| expiration_month | integer    | null: false                            |
-| expiration_year  | integer    | null: false                            |
-| security_code    | integer    | null: false                            |
-| user             | references | null: false, foreign_key: true         |
-
-### Associations
--belongs_to: user
-
 ## shippings Table
 | Column          | Type       | Options                                |
 | --------------- | ---------- | -------------------------------------- |
-| postal_code     | integer(7) | null: false                            |
-| prefecture      | string     | null: false                            |
+| postal_code     | string     | null: false                            |
+| prefecture_id   | integer    | null: false                            |
 | city            | string     | null: false                            |
 | house_number    | string     | null: false                            |
-| building_name   | string     | null: false                            |
-| phone_number    | integer    | null: false                            |
-| user            | references | null: false, foreign_key: true         |
+| building_name   | string     | null: true                             |
+| phone_number    | string     | null: false                            |
 | purchase        | references | null: false, foreign_key: true         |
 
 ### Associations
