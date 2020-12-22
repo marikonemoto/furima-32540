@@ -30,7 +30,6 @@
 | user            | references | null: false, foreign_key: true         |
 | category_id     | integer    | null: false                            |
 | condition_id    | integer    | null: false                            |
-| size_id         | integer    | null: false                            |
 | shipping_cost_id| integer    | null: false                            |
 | area_id         | integer    | null: false                            |
 | time_to_ship_id | integer    | null: false                            |
@@ -40,7 +39,6 @@
 -has_one: purchase
 -belongs_to_active_hash: category
 -belongs_to_active_hash: condition
--belongs_to_active_hash: size
 -belongs_to_active_hash: shipping_cost
 -belongs_to_active_hash: area
 -belongs_to_active_hash: time_to_ship
