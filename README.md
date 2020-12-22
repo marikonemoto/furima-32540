@@ -13,7 +13,7 @@
 | last_name          | string  | null: false                            |
 | first_name_kana    | string  | null: false                            |
 | last_name_kana     | string  | null: false                            |
-| dob                | date    | null: false                            |
+| birthday           | date    | null: false                            |
 
 ### Associations
 -has_many: items
@@ -68,5 +68,4 @@
 | purchase        | references | null: false, foreign_key: true         |
 
 ### Associations
--belongs_to: user
 -belongs_to: purchase
