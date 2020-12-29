@@ -9,8 +9,9 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
 
-  PASSWORD_REGEX = /\A(?=.*?[\d])[a-z\d]+\z/i.freeze
-  validates :password, presence: true, length: { minimum: 6 }, confirmation: true, format: { with: PASSWORD_REGEX, message: '英字と数字の両方を含めてください'}
+  PASSWORD_REGEX = /\A(?=.*?\d)[a-z\d]+\z/i.freeze
+  validates :password, presence: true, length: { minimum: 6 }, confirmation: true,
+                       format: { with: PASSWORD_REGEX, message: '英字と数字の両方を含めてください' }
 
   with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/, message: '全角(漢字・ひらがな・カタカナ)を使用してください' } do
     validates :first_name
