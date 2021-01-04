@@ -17,7 +17,7 @@
 
 ### Associations
 -has_many: items
--has_many: purchases
+-has_many: orders
 
 
 ## items Table
@@ -36,14 +36,14 @@
 
 ### Associations
 -belongs_to: user
--has_one: purchase
+-has_one: order
 -belongs_to_active_hash: category
 -belongs_to_active_hash: condition
 -belongs_to_active_hash: shipping_cost
 -belongs_to_active_hash: area
 -belongs_to_active_hash: time_to_ship
 
-## purchases Table
+## orders Table
 | Column          | Type       | Options                                |
 | --------------- | ---------- | -------------------------------------- |
 | user            | references | null: false, foreign_key: false        |
@@ -66,4 +66,4 @@
 | purchase        | references | null: false, foreign_key: true         |
 
 ### Associations
--belongs_to: purchase
+-belongs_to: order
