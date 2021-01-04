@@ -60,15 +60,15 @@ RSpec.describe Item, type: :model do
       it 'priceが空だと登録できない' do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price is not a number', 'Price Out of setting range')
+        expect(@item.errors.full_messages).to include("Price can't be blank")
       end
-      it 'priceが300未満の場合は登録できない' do
-        @item.price = '250'
+      it 'priceが299以下の場合は登録できない' do
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
       it 'priceが9999999より大きい場合は登録できない' do
-        @item.price = '10000000'
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
@@ -81,8 +81,3 @@ RSpec.describe Item, type: :model do
   end
 end
 
-# 販売価格は半角数字のみ保存可能であること
-# 入力された販売価格によって、販売手数料や販売利益の表示が変わること
-# 必要な情報を適切に入力すると、商品の出品ができること
-# エラーハンドリングができていること（適切では無い値が入力された場合、情報は保存されず、エラーメッセージを出力させること）
-# 入力に問題がある状態で出品ボタンが押されたら、出品ページに戻りエラーメッセージが表示されること

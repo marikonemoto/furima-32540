@@ -19,6 +19,7 @@ class Item < ApplicationRecord
     validates :shipping_cost_id
     validates :area_id
     validates :time_to_ship_id
+    validates :price
   end
 
   validates :price, numericality: { only_integer: true }
