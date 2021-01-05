@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @order = Order.where(item_id: @item.id)
+    @order = @item.order
   end
 
   private
