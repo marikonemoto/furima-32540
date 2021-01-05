@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
 
   def edit
   end
-  
+
   def update
     if @item.update(item_params)
       redirect_to action: :show
@@ -47,8 +47,6 @@ class ItemsController < ApplicationController
 
   def correct_user
     @item = current_user.items.find_by(id: params[:id])
-      unless @item
-        redirect_to root_path
-      end
+    redirect_to root_path unless @item
   end
 end
