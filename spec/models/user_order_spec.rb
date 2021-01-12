@@ -38,6 +38,12 @@ RSpec.describe UserOrder, type: :model do
         expect(@user_order.errors.full_messages).to include("Area can't be blank")
       end
 
+      it 'area_idが0では登録できない' do
+        @user_order.area_id = '0'
+        @user_order.valid?
+        expect(@user_order.errors.full_messages).to include("Area must be other than 0")
+      end
+
       it 'cityが空だと登録できない' do
         @user_order.city = ''
         @user_order.valid?
