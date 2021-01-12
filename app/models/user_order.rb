@@ -10,9 +10,8 @@ class UserOrder
     validates :phone_number
     validates :user_id
     validates :item_id
+    validates :token
   end
-
-  validates :token, presence: true, format: { with: /\d+/ }
 
   validates :area_id, numericality: { other_than: 0 }
   validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/ }, length: { maximum: 8 }
