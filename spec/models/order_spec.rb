@@ -16,13 +16,13 @@ RSpec.describe Order, type: :model do
       it 'user_idが紐づいていない場合は登録できない' do
         @order.user_id = nil
         @order.valid?
-        expect(@order.errors.full_messages).to include("User must exist")
+        expect(@order.errors.full_messages).to include('User must exist')
       end
 
       it 'item_idが紐づいていない場合は登録できない' do
         @order.item_id = nil
         @order.valid?
-        expect(@order.errors.full_messages).to include("Item must exist")
+        expect(@order.errors.full_messages).to include('Item must exist')
       end
     end
   end

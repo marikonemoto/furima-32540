@@ -19,7 +19,7 @@ RSpec.describe UserOrder, type: :model do
       end
     end
 
-    context '商品配送先登録がうまくできない場合' do 
+    context '商品配送先登録がうまくできない場合' do
       it 'postal_codeが空だと登録できない' do
         @user_order.postal_code = ''
         @user_order.valid?
@@ -29,7 +29,7 @@ RSpec.describe UserOrder, type: :model do
       it 'postal_codeに"-"がないと登録できない' do
         @user_order.postal_code = '1234567'
         @user_order.valid?
-        expect(@user_order.errors.full_messages).to include("Postal code is invalid")
+        expect(@user_order.errors.full_messages).to include('Postal code is invalid')
       end
 
       it 'area_idが空だと登録できない' do
@@ -59,13 +59,13 @@ RSpec.describe UserOrder, type: :model do
       it 'phone_numberが12桁以上だと登録できない' do
         @user_order.phone_number = '090123456789'
         @user_order.valid?
-        expect(@user_order.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+        expect(@user_order.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
       end
 
       it 'phone_numberに"-"があると登録できない' do
         @user_order.phone_number = '090-1234-5678'
         @user_order.valid?
-        expect(@user_order.errors.full_messages).to include("Phone number is not a number")
+        expect(@user_order.errors.full_messages).to include('Phone number is not a number')
       end
 
       it 'tokenが空だと登録できない' do
@@ -76,15 +76,15 @@ RSpec.describe UserOrder, type: :model do
 
       it 'user_idが紐づいていない場合は登録できない' do
         @user_order.user_id = nil
-          @user_order.valid?
-          expect(@user_order.errors.full_messages).to include("User can't be blank")
-        end
-  
-        it 'item_idが紐づいていない場合は登録できない' do
-          @user_order.item_id = nil
-          @user_order.valid?
-          expect(@user_order.errors.full_messages).to include("Item can't be blank")
-        end
+        @user_order.valid?
+        expect(@user_order.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'item_idが紐づいていない場合は登録できない' do
+        @user_order.item_id = nil
+        @user_order.valid?
+        expect(@user_order.errors.full_messages).to include("Item can't be blank")
+      end
     end
   end
 end
