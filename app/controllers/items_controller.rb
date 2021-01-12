@@ -55,7 +55,6 @@ class ItemsController < ApplicationController
   end
 
   def correct_user
-    @item = current_user.items.find_by(id: params[:id])
-    redirect_to root_path unless @item
+    redirect_to root_path if current_user.id != @item.user.id
   end
 end

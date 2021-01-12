@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
+  before_action :authenticate_user!, only: [:index, :create]
+  before_action :contributor_confirmation, only: [:index, :create]
 
   def index
     @user_order = UserOrder.new
@@ -35,5 +37,9 @@ class OrdersController < ApplicationController
       card: params[:token], # カードトークン
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
+  end
+
+  def contributor_confirmation
+    redirect_to root_path if current_user.id == @item.user.id || @item.order.present?
   end
 end
